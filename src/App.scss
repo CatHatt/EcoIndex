@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 * {
     &,
     &::before,
@@ -5,5 +7,115 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }
+}
+
+html,
+body,
+#root {
+    width: 100dvw;
+    height: 100dvh;
+}
+
+#root {
+    font-family: "Inter", sans-serif;
+}
+
+// Reset button styling
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+.hero {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    inset: 0;
+    bottom: unset;
+    .background-wrapper {
+        position: absolute;
+        inset: 0;
+        bottom: -40px;
+        .background {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            filter: brightness(70%);
+        }
+    }
+    .header {
+        color: #baffaf;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        text-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px;
+        font-weight: 900;
+        font-size: 4rem;
+    }
+}
+
+.main {
+    width: 100%;
+    height: 70%;
+    background: white;
+    position: absolute;
+    inset: 0;
+    top: unset;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    .navbar-wrapper {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        .navbar {
+            background: #e9ffe5;
+            border-radius: 1000px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px, #9dff8d 0 0 8px inset;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .button {
+                cursor: pointer;
+                padding: 15px;
+                * {
+                    width: 48px;
+                    aspect-ratio: 1;
+                    display: block;
+                    color: #17af00;
+                    svg {
+                        color: inherit;
+                    }
+                }
+            }
+            .spacer {
+                height: 60%;
+                width: 3px;
+                background: #baffaf;
+                border-radius: 10000px;
+            }
+        }
     }
 }

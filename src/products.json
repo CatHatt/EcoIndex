@@ -1,0 +1,84 @@
+{
+    "products": [
+        {
+            "name": "T-Shirt",
+            "CO2-emissions": "High due to water-intensive cotton farming.",
+            "Ingredients": "Cotton (often sprayed with pesticides), dyes (some synthetic and harmful to the environment).",
+            "Production-method": "Large-scale farming, often involving child labor and harmful chemicals.",
+            "Coloring": "Synthetic dyes, some of which can be toxic to water bodies.",
+            "Packaging": "Usually plastic bags or cardboard boxes, both contributing to waste."
+        },
+        {
+            "name": "Smartphone",
+            "CO2-emissions": "High due to the complex manufacturing process and the use of rare earth metals.",
+            "Ingredients": "Metals (e.g., aluminum, copper, lithium), plastics, glass.",
+            "Production-method": "Energy-intensive assembly in factories, often with poor working conditions.",
+            "Coloring": "Primarily metallic finishes, sometimes involving harmful chemicals.",
+            "Packaging": "Cardboard boxes, plastic components, and styrofoam inserts."
+        },
+        {
+            "name": "Beef Steak",
+            "CO2-emissions": "Extremely high due to methane emissions from cattle and deforestation for grazing.",
+            "Ingredients": "Beef, often from animals raised in intensive farming conditions.",
+            "Production-method": "Large-scale cattle ranching, often involving deforestation and unsustainable practices.",
+            "Coloring": "None.",
+            "Packaging": "Usually plastic trays or foam containers."
+        },
+        {
+            "name": "Palm Oil-Based Products",
+            "CO2-emissions": "High due to deforestation for palm oil plantations.",
+            "Ingredients": "Palm oil, used in many processed foods and cosmetics.",
+            "Production-method": "Large-scale plantations, often leading to deforestation and habitat destruction.",
+            "Coloring": "None.",
+            "Packaging": "Varies depending on the product, but often includes plastic and cardboard."
+        },
+        {
+            "name": "Paper Products (e.g., Notebooks, Tissue)",
+            "CO2-emissions": "Moderate, depending on the source of the wood.",
+            "Ingredients": "Wood pulp, often from managed forests.",
+            "Production-method": "Pulping and papermaking, which can involve the use of chemicals.",
+            "Coloring": "Dyes and pigments, some of which can be harmful to the environment.",
+            "Packaging": "Often cardboard boxes or plastic bags."
+        },
+        {
+            "name": "Fast Fashion Clothing",
+            "CO2-emissions": "High due to the rapid production cycle and use of synthetic materials.",
+            "Ingredients": "Synthetic fabrics (e.g., polyester, nylon), often from fossil fuels.",
+            "Production-method": "Low-cost manufacturing, often with poor working conditions and environmental practices.",
+            "Coloring": "Synthetic dyes, some of which can be toxic to water bodies.",
+            "Packaging": "Plastic bags or cardboard boxes."
+        },
+        {
+            "name": "Processed Foods",
+            "CO2-emissions": "Varies depending on the ingredients and production methods.",
+            "Ingredients": "A variety of ingredients, often processed and packaged.",
+            "Production-method": "Industrial food processing, often involving energy-intensive processes.",
+            "Coloring": "Artificial colors, some of which can be harmful to health.",
+            "Packaging": "Plastic bags, boxes, and other packaging materials."
+        },
+        {
+            "name": "Electronics (e.g., TVs, Computers)",
+            "CO2-emissions": "High due to the complex manufacturing process and the use of rare earth metals.",
+            "Ingredients": "Metals, plastics, glass.",
+            "Production-method": "Energy-intensive assembly in factories, often with poor working conditions.",
+            "Coloring": "Primarily metallic finishes, sometimes involving harmful chemicals.",
+            "Packaging": "Cardboard boxes, plastic components, and styrofoam inserts."
+        },
+        {
+            "name": "Plastic Bottles",
+            "CO2-emissions": "Moderate due to the production process and transportation.",
+            "Ingredients": "Plastic (e.g., polyethylene terephthalate).",
+            "Production-method": "Chemical process to produce plastic, often using fossil fuels.",
+            "Coloring": "Pigments, some of which can be harmful to the environment.",
+            "Packaging": "None."
+        },
+        {
+            "name": "Fish Products (e.g., Canned Tuna)",
+            "CO2-emissions": "Moderate to high, depending on fishing practices and transportation.",
+            "Ingredients": "Fish, often caught using unsustainable methods.",
+            "Production-method": "Fishing and processing, which can have negative impacts on marine ecosystems.",
+            "Coloring": "None.",
+            "Packaging": "Metal cans or plastic pouches."
+        }
+    ]
+}

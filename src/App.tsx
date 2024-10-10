@@ -1,89 +1,74 @@
-import CameraIcon from "./assets/CameraIcon";
-import HamburgerMenu from "./assets/HamburgerMenu";
-import natureBackground from "/nature background.jpg";
-import "./App.scss";
-import { useEffect, useState } from "react";
-import Quagga from "quagga";
-import { quaggaConfig } from "./quaggaConfig";
+import CameraIcon from './assets/CameraIcon'
+import HamburgerMenu from './assets/HamburgerMenu'
+import natureBackground from '/nature background.jpg'
+import './App.scss'
+import { useState } from 'react'
 
 function App() {
-    const [stream, setStream] = useState<boolean>(false);
+    async function openCamera() {
+        const vid = document.getElementById('video')! as HTMLVideoElement
 
-    useEffect(() => {
-        getPermission();
+        await navigator.mediaDevices
+            .getUserMedia({ video: true })
+            .then((stream) => {
+                vid.srcObject = stream
+                vid.onloadedmetadata = () => {
+                    vid.play()
+                }
+            })
+    }
 
-        async function getPermission() {
-            try {
-                const allowed = await navigator.mediaDevices
-                    .getUserMedia({ video: true })
-                    .then(() => true);
-                setStream(allowed);
-            } catch (error) {
-                console.log(
-                    `The scanner did not respond due to the following error: ${error}`
-                );
-                setStream(false);
-            }
-        }
-    }, []);
+    const root = document.querySelector(':root') as HTMLHtmlElement
 
-    Quagga.onDetected((data: unknown) => {
-        console.log(1);
-        console.log(data);
-    });
+    const [menuOpen, setMenuOpen] = useState(false)
 
     return (
         <>
-            <div className="hero">
-                <div className="background-wrapper">
-                    <img src={natureBackground} className="background" />
-                </div>
-                <h1 className="header">EcoIndex</h1>
-            </div>
-            <main className="main">
-                <div
-                    id="video"
-                    style={{
-                        height: "100px",
-                        width: "100px",
-                        // position: "absolute",
-                        // zIndex: "10",
-                    }}
-                ></div>
-                <div className="navbar-wrapper">
-                    <nav className="navbar">
+            <div className={`navbar-wrapper ${menuOpen ? 'menu-open' : ''}`}>
+                <nav className='navbar'>
+                    {[
                         <button
+                            className='button'
                             onClick={() => {
-                                if (stream) {
-                                    Quagga.init(
-                                        quaggaConfig,
-                                        function (err: Error) {
-                                            if (err) {
-                                                console.log(err);
-                                                return;
-                                            }
-                                            console.log(
-                                                "Initialization finished. Ready to start"
-                                            );
-                                            Quagga.start();
-                                            console.log("started");
-                                        }
-                                    );
-                                }
+                                setMenuOpen(!menuOpen)
+                                const navbarRect = (
+                                    document.querySelector(
+                                        '.navbar'
+                                    ) as HTMLElement
+                                ).getBoundingClientRect()
+                                root.style.setProperty(
+                                    '--navbar-width',
+                                    navbarRect.width.toString()
+                                )
+                                root.style.setProperty(
+                                    '--navbar-height',
+                                    navbarRect.height.toString()
+                                )
                             }}
-                            className="button"
                         >
                             <CameraIcon />
-                        </button>
-                        <div className="spacer"></div>
-                        <button className="button">
+                        </button>,
+                        <button className='button'>
                             <HamburgerMenu />
-                        </button>
-                    </nav>
+                        </button>,
+                    ].map((item, index, array) => [
+                        item,
+                        index != array.length - 1 && (
+                            <div className='spacer'></div>
+                        ),
+                    ])}
+                </nav>
+                <div className='navbar-menu'></div>
+            </div>
+            <div className='hero'>
+                <div className='background-wrapper'>
+                    <img src={natureBackground} className='background' />
                 </div>
-            </main>
+                <h1 className='header'>EcoIndex</h1>
+            </div>
+            <main className='main'></main>
         </>
-    );
+    )
 }
 
-export default App;
+export default App

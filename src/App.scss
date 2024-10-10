@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
     &,
@@ -18,7 +18,7 @@ body,
 }
 
 #root {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 // Reset button styling
@@ -44,31 +44,119 @@ button {
 
     /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
+    appearance: none;
+}
+
+:root {
+    --navbar-width: 159px;
+    --navbar-height: 78px;
+}
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    z-index: 10000;
+    .navbar {
+        border-radius: 1000px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .button {
+            cursor: pointer;
+            padding: 15px;
+            * {
+                width: 48px;
+                aspect-ratio: 1;
+                display: block;
+                color: #17af00;
+            }
+        }
+        .spacer {
+            height: 60%;
+            width: 3px;
+            background: #baffaf;
+            border-radius: 10000px;
+        }
+    }
+    .navbar-menu {
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+        bottom: 0;
+    }
+
+    &:not(.menu-open) {
+        .navbar {
+            background: #e9ffe5;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px, #9dff8d 0 0 8px inset;
+        }
+        .navbar-menu {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    &.menu-open {
+        .navbar {
+        }
+        .navbar-menu {
+            background: #e9ffe5;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px, #9dff8d 0 0 8px inset;
+            animation: scaleMenu 1s ease-in-out;
+            width: 100dvw;
+            height: 100dvh;
+            border-radius: 50px;
+        }
+    }
+}
+
+@keyframes scaleMenu {
+    0% {
+        width: var(--navbar-width);
+        height: var(--navbar-height);
+        border-radius: var(--navbar-height) / 2;
+    }
+    100% {
+        width: 100dvw;
+        height: 100dvh;
+        border-radius: 50px;
+    }
 }
 
 .hero {
     width: 100%;
     height: 30%;
+
     position: absolute;
+    z-index: -1;
     inset: 0;
     bottom: unset;
+
     .background-wrapper {
         position: absolute;
         inset: 0;
         bottom: -40px;
+
         .background {
             object-fit: cover;
             width: 100%;
             height: 100%;
+
             filter: brightness(70%);
         }
     }
+
     .header {
         color: #baffaf;
+
         position: absolute;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
+
         text-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px;
         font-weight: 900;
         font-size: 4rem;
@@ -77,45 +165,25 @@ button {
 
 .main {
     width: 100%;
-    height: 70%;
+    // height: 70%;
+    height: 100%;
+
     background: white;
+
     position: absolute;
     inset: 0;
-    top: unset;
+    top: 30dvh;
+    bottom: unset;
+
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    .navbar-wrapper {
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
-        .navbar {
-            background: #e9ffe5;
-            border-radius: 1000px;
-            box-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px, #9dff8d 0 0 8px inset;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            .button {
-                cursor: pointer;
-                padding: 15px;
-                * {
-                    width: 48px;
-                    aspect-ratio: 1;
-                    display: block;
-                    color: #17af00;
-                    svg {
-                        color: inherit;
-                    }
-                }
-            }
-            .spacer {
-                height: 60%;
-                width: 3px;
-                background: #baffaf;
-                border-radius: 10000px;
-            }
-        }
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .video {
+        width: 90%;
+        margin-inline: auto;
+        // height: 50%;
     }
 }

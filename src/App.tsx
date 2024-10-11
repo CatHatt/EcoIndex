@@ -3,24 +3,23 @@ import HamburgerMenu from './assets/HamburgerMenu'
 import natureBackground from '/nature background.jpg'
 import './App.scss'
 import { useState } from 'react'
+import { products } from './products'
+import Camera from './CameraComponent'
+
+interface Product {
+    name: string
+    CO2e_kg: number
+    impact_description: string
+}
 
 function App() {
-    async function openCamera() {
-        const vid = document.getElementById('video')! as HTMLVideoElement
-
-        await navigator.mediaDevices
-            .getUserMedia({ video: true })
-            .then((stream) => {
-                vid.srcObject = stream
-                vid.onloadedmetadata = () => {
-                    vid.play()
-                }
-            })
-    }
-
-    const root = document.querySelector(':root') as HTMLHtmlElement
-
     const [menuOpen, setMenuOpen] = useState(false)
+
+    // useEffect(() => {
+
+    // })
+
+    // const root = document.querySelector(':root')
 
     return (
         <>
@@ -30,20 +29,23 @@ function App() {
                         <button
                             className='button'
                             onClick={() => {
-                                setMenuOpen(!menuOpen)
+                                const navbarWrapper = document.querySelector(
+                                    '.navbar-wrapper'
+                                ) as HTMLDivElement
                                 const navbarRect = (
                                     document.querySelector(
                                         '.navbar'
                                     ) as HTMLElement
                                 ).getBoundingClientRect()
-                                root.style.setProperty(
+                                navbarWrapper.style.setProperty(
                                     '--navbar-width',
-                                    navbarRect.width.toString()
+                                    `${navbarRect.width}px`
                                 )
-                                root.style.setProperty(
+                                navbarWrapper.style.setProperty(
                                     '--navbar-height',
-                                    navbarRect.height.toString()
+                                    `${navbarRect.height}px`
                                 )
+                                setMenuOpen(!menuOpen)
                             }}
                         >
                             <CameraIcon />
@@ -58,7 +60,9 @@ function App() {
                         ),
                     ])}
                 </nav>
-                <div className='navbar-menu'></div>
+                <div className='navbar-menu'>
+                    {menuOpen && <Camera show={menuOpen} />}
+                </div>
             </div>
             <div className='hero'>
                 <div className='background-wrapper'>
@@ -66,7 +70,19 @@ function App() {
                 </div>
                 <h1 className='header'>EcoIndex</h1>
             </div>
-            <main className='main'></main>
+            <main className='main'>
+                {products.map((product: Product, i) => (
+                    <div key={i}>
+                        <div className='title'>
+                            <p>{product.name}</p>
+                            <p>
+                                {product.CO2e_kg}kg CO<sub>2</sub>e/kg
+                            </p>
+                        </div>
+                        <p>{product.impact_description}</p>
+                    </div>
+                ))}
+            </main>
         </>
     )
 }
